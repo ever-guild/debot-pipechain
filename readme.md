@@ -17,6 +17,7 @@ bash pipechain.sh
 **out**
 ```shell
 setup compiler 0.66.0 linker 0.20.2 ✓
+compile via tmv-solidity size tvc 3410 bytes ✓
 deploy debot in SE ✓
 setup tvmos 0.35.4 ✓
 run debot with pipechain

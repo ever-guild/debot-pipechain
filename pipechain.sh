@@ -5,6 +5,11 @@ echo -n "setup compiler 0.66.0 linker 0.20.2" | tee build.log
 npx everdev sol set --compiler 0.66.0 --linker 0.20.2 &>build.log
 echo " ✓"
 
+echo -n "compile via tmv-solidity" | tee build.log
+npx everdev sol compile pipechain.tsol
+echo -n " size tvc $(du -b pipechain.tvc | cut -f1) bytes"
+echo " ✓"
+
 echo -n "deploy debot in SE" | tee build.log
 npx everdev network default se &>build.log
 npx everdev se reset &>build.log

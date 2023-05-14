@@ -1,5 +1,15 @@
 # `debot pipechain`
 
+## Requirements
+
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+npm inxtall --global everdev
+sudo apt-get install jq
+```
+
+## How to use
+
 ```shell
 bash pipechain.sh
 ```

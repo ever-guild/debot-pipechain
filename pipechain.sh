@@ -6,7 +6,14 @@ npx everdev sol set --compiler 0.66.0 --linker 0.20.2 &>build.log
 echo " ✓"
 
 echo -n "compile via tmv-solidity" | tee build.log
-npx everdev sol compile pipechain.tsol
+npx everdev sol compile --code pipechain.tsol
+echo -n " size tvc $(du -b pipechain.tvc | cut -f1) bytes"
+echo " ✓"
+
+echo -n "compile via fift" | tee build.log
+rm -f pipechain.tvc
+t2f -ta pipechain.code
+fift pipechain.fif
 echo -n " size tvc $(du -b pipechain.tvc | cut -f1) bytes"
 echo " ✓"
 
@@ -14,6 +21,10 @@ echo -n "deploy debot in SE" | tee build.log
 npx everdev network default se &>build.log
 npx everdev se reset &>build.log
 npx everdev contract deploy pipechain -v 1T &>build.log
+if [ "$?" -ne 0 ]; then
+  echo " ✘ $(tail -n 1 build.log)"
+  exit 1
+fi
 npx everdev contract info pipechain | grep Address | cut -d' ' -f4 > pipechain.addr
 appABI=$(< "pipechain.abi.json" jq --compact-output | xxd -ps -c 20000)
 npx everdev contract run --address "$(cat pipechain.addr)" pipechain setABI --input "dabi:$appABI" &>build.log

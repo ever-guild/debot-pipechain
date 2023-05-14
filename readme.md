@@ -6,6 +6,8 @@
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 npm inxtall --global everdev
 sudo apt-get install jq
+pip install t2f
+# install fift https://docs.ton.org/develop/smart-contracts/environment/installation#1-download 
 ```
 
 ## How to use

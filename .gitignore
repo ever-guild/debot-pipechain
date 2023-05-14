@@ -6,3 +6,5 @@ keys.json
 *.debug.json
 *.addr
 *.tvc
+*.code
+*.fif

@@ -6,8 +6,7 @@ npx everdev sol set --compiler 0.66.0 --linker 0.20.2 &>build.log
 echo " ✓"
 
 echo -n "deploy debot in SE" | tee build.log
-npx everdev sol compile pipechain.tsol
-npx everdev nenwork default se &>build.log
+npx everdev network default se &>build.log
 npx everdev se reset &>build.log
 npx everdev contract deploy pipechain -v 1T &>build.log
 npx everdev contract info pipechain | grep Address | cut -d' ' -f4 > pipechain.addr
